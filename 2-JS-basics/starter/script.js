@@ -88,3 +88,24 @@ console.log(typeof x);
 /****************
  * operator precedence
  */
+
+ var now = 2018;
+ var yearJohn = 1989;
+ var fullAge = 18;
+
+ //The SYNTAX is what turns this into  boolean
+ //multiple operators
+ var isFullAge = now - yearJohn >= fullAge;
+ console.log(isFullAge);
+
+ //grouping
+ var ageJohn = now - yearJohn;
+ var ageMark = 35;
+ var average = (ageJohn + ageMark) / 2;
+ console.log(average);
+ 
+ //multiple assignments
+ var x, y;
+ x = y = ( 3 + 5 ) * 4 - 6;  //8* 4 - 6 // 32 - 6 //  26
+ //x and y are BOTH defined this way ...associativity?
+ console.log(x, y);
