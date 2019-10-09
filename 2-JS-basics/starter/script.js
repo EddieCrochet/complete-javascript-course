@@ -109,3 +109,8 @@ console.log(typeof x);
  x = y = ( 3 + 5 ) * 4 - 6;  //8* 4 - 6 // 32 - 6 //  26
  //x and y are BOTH defined this way ...associativity?
  console.log(x, y);
+
+ //more operators
+ x = x * 2;
+ x *= 2;
+ //above 2 are the same
