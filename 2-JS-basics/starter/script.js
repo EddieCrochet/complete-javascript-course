@@ -123,6 +123,7 @@ console.log(typeof x);
   * if / else statements
   */
 
+  /*
   var firstName = 'John';
   var civilStatus = 'single';
 
@@ -138,3 +139,21 @@ console.log(typeof x);
   } else {
       console.log(firstName + ' will hopefully marry soon! :)');
   }
+  */
+
+  /**********
+   * BOOLEAN LOGIC
+   */
+
+   var firstName  = 'John';
+   var age = 16;
+
+   if (age < 13) {
+       console.log(firstName + ' is a boy.');
+   } else if (age >= 13 && age < 20) { //between 13 and 20
+        console.log(firstName + ' is a teenager.');
+   } else if (age >= 20 && age < 30) {
+        console.log(firstName + ' Is a young man.');
+   } else {
+       console.log(firstName + ' is a man.');
+   }
