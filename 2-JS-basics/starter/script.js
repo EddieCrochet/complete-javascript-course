@@ -89,6 +89,7 @@ console.log(typeof x);
  * operator precedence
  */
 
+ /*
  var now = 2018;
  var yearJohn = 1989;
  var fullAge = 18;
@@ -116,3 +117,24 @@ console.log(typeof x);
  //above 2 are the same
  //and increment just like in C#
  x++
+ */
+
+ /*************
+  * if / else statements
+  */
+
+  var firstName = 'John';
+  var civilStatus = 'single';
+
+  if(civilStatus === 'married'){
+      console.log(firstName + ' is married.');
+  } else {
+      console.log(firstName + ' will hopefully marry soon.');
+  }
+
+  var isMarried = true;
+  if (isMarried ) {
+      console.log(firstName + ' is married!');
+  } else {
+      console.log(firstName + ' will hopefully marry soon! :)');
+  }
