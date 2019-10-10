@@ -114,3 +114,5 @@ console.log(typeof x);
  x = x * 2;
  x *= 2;
  //above 2 are the same
+ //and increment just like in C#
+ x++
