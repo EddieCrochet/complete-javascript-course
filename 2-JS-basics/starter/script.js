@@ -165,6 +165,7 @@ console.log(typeof x);
   */
 
   //TERNARY
+  /*
   var firstName = 'John';
   var age = 16;
 
@@ -212,6 +213,28 @@ console.log(typeof x);
         console.log(firstName + ' is a young man.');
         break;
     default:
-        console.log(firstName + ' isa man.');
+        console.log(firstName + ' is a man.');
   }
+*/
+/***********
+ * TRUTHY AND FALSY VALUES
+ */
 
+ // falsy values: undefined, null, 0, '', NAN
+
+var height;
+
+height = 23;
+
+//common pattern to check if variable is defined
+if (height || height === 0){
+    console.log('variable is defined.');
+} else {
+    console.log('variable has NOT been defined.');
+}
+
+
+//equality operators
+if (height =='23'){
+    console.log('The == operator does type coercion!');
+}
