@@ -145,6 +145,7 @@ console.log(typeof x);
    * BOOLEAN LOGIC
    */
 
+   /*
    var firstName  = 'John';
    var age = 16;
 
@@ -157,3 +158,43 @@ console.log(typeof x);
    } else {
        console.log(firstName + ' is a man.');
    }
+   */
+
+  /****************** 
+   * ternary operator and switch statement
+  */
+
+  //TERNARY
+  var firstName = 'John';
+  var age = 16;
+
+  age >= 18 ? console.log(firstName + ' drinks beer.')
+  : console.log(firstName + ' drinks juice.');
+
+  var drink = age >= 18 ? 'beer' : 'juice';
+  console.log(drink);
+  
+  //and compared to an if/else statement
+
+  if ( age >= 18){
+      var drink = 'beer';
+  } else {
+      var drink = 'juice';
+  }
+
+  //SWITCH STATEMENT
+
+  var job = 'teacher';
+  switch (job){
+      case 'teacher':
+        console.log(firstName + ' teaches kids how to code');
+        break;
+    case 'driver':  
+        console.log(firstName + ' drives an Uber in Lisbon');
+        break;
+    case 'designer':
+        console.log(firstName + ' designs beautiful websites.');
+        break
+    default:
+        console.log(firstName + ' does something else.');
+  }
