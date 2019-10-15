@@ -278,6 +278,7 @@ if (height =='23'){
    //function whatDoYouDo(job, firstName) {};
 
    //function expression - assign a function to a variable
+   /*
    var whatDoYouDo = function(job, firstName){
         switch(job) {
             case 'teacher':
@@ -294,3 +295,40 @@ if (height =='23'){
    console.log(whatDoYouDo('teacher', 'John'));
    console.log(whatDoYouDo('designer', 'Jane'));
    console.log(whatDoYouDo('retired', 'Mark'));
+   */
+
+   /*************
+    * Arrays
+    */
+
+    //initialize new arrays
+    var names = ['John', 'Mark', 'Jane'];
+    //top is more common
+    var years = new Array(1990, 1969, 1948);
+
+    console.log(names);
+    console.log(names.length);
+
+    //mutate array data
+    names[1] = 'Ben';
+    names[names.length] = 'Mary';
+    console.log(names);
+
+    // Different data types
+    var john = ['John', 'Smith', 1990, 'teacher', false];
+
+    john.push('blue');
+    // unshift adds to beggining of array
+    john.unshift('Mr.');
+    console.log(john);
+
+    john.pop();
+    // shift removes from beginning of array
+    john.shift();
+    console.log(john);
+
+    console.log(john.indexOf('John'));
+
+    var isDesigner = john.indexOf('designer') === -1 ?
+    'John is NOT a designer' : 'John IS a designer';
+    console.log(isDesigner);
