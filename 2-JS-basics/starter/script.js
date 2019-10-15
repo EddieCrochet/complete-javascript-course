@@ -222,6 +222,7 @@ console.log(typeof x);
 
  // falsy values: undefined, null, 0, '', NAN
 
+ /*
 var height;
 
 height = 23;
@@ -238,3 +239,58 @@ if (height || height === 0){
 if (height =='23'){
     console.log('The == operator does type coercion!');
 }
+*/
+
+/************
+ * FUNCTIONS
+ */
+
+ /*
+  function calculateAge(birthYear){
+      return 2018 - birthYear;
+  }
+
+  var ageJohn = calculateAge(1990);
+  var ageMike = calculateAge(1945);
+  var ageJane = calculateAge(1773);
+  console.log(ageJohn, ageMike, ageJane);
+
+  function yearsUntilRetirement(year, firstName){
+      var age = calculateAge(year);
+      var retirement = 65 - age;
+      if (retirement > 0){
+        console.log(firstName + ' retires in ' +  retirement + ' years.');
+      } else {
+          console.log(firstName + ' is already retired!');
+      }
+  }
+
+  yearsUntilRetirement(1990, 'John');
+  yearsUntilRetirement(1954, 'Mike');
+  yearsUntilRetirement(1932, 'Jane');
+  */
+
+  /********
+   * FUNCTION STATEMENTS AND EXPRESSIONS
+   */
+
+   //function declaration
+   //function whatDoYouDo(job, firstName) {};
+
+   //function expression - assign a function to a variable
+   var whatDoYouDo = function(job, firstName){
+        switch(job) {
+            case 'teacher':
+                return firstName + ' teaches kids code.';
+            case 'driver':
+                return firstName + ' drives for money.';
+            case 'designer':
+                return firstName + ' makes pretty websites.'
+            default:
+                return firstName + ' does something else.';
+        }
+   }
+
+   console.log(whatDoYouDo('teacher', 'John'));
+   console.log(whatDoYouDo('designer', 'Jane'));
+   console.log(whatDoYouDo('retired', 'Mark'));
