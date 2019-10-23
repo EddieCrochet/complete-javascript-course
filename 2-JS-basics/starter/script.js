@@ -301,6 +301,8 @@ if (height =='23'){
     * Arrays
     */
 
+
+    /*
     //initialize new arrays
     var names = ['John', 'Mark', 'Jane'];
     //top is more common
@@ -332,3 +334,9 @@ if (height =='23'){
     var isDesigner = john.indexOf('designer') === -1 ?
     'John is NOT a designer' : 'John IS a designer';
     console.log(isDesigner);
+    */
+
+    //////////////
+    //Objects and properties
+
+    
