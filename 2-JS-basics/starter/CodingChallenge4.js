@@ -3,7 +3,7 @@ var mark = {
     mass: 60,
     height: 1.64,
     calcBMI: function() {
-        this.BMI = this.mass / (this.height * this.height)
+        this.BMI = this.mass / (this.height * this.height);
     }
 };
 
@@ -12,9 +12,12 @@ var john = {
     mass: 76,
     height: 1.78,
     calcBMI: function() {
-        this.BMI = this.mass / (this.height * this.height)
+        this.BMI = this.mass / (this.height * this.height);
     }
 };
+
+mark.calcBMI();
+john.calcBMI();
 
 if (john.BMI > mark.BMI) {
     console.log(john.fullName + " has the higher BMI at " + john.BMI);
