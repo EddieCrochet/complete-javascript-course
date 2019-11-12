@@ -340,7 +340,7 @@ if (height =='23'){
     //Objects and properties
 
     //object literal
-    var john = {
+    /*var john = {
         firstName: 'John',
         lastName: 'Smith',
         birthYear: 1990,
@@ -364,3 +364,25 @@ if (height =='23'){
     jane.birthYear = 1969;
     jane['lastName'] = 'Smith';
     console.log(jane);
+    */
+
+    /***************
+     * *Objects And Methods
+     */
+
+    var john = {
+        firstName: 'John',
+        lastName: 'Smith',
+        birthYear: 1994,
+        family: ['Jane', 'Mark', 'Bob', 'Emily'],
+        job: 'teacher',
+        isMarried: false,
+        calcAge: function() {
+            this.age = 2018 - this.birthYear;
+            //instead of returning the result we stored it in the object
+            //usually the best way
+        }
+    };
+
+    john.calcAge();
+    console.log(john);
