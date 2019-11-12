@@ -381,6 +381,7 @@ if (height =='23'){
             this.age = 2018 - this.birthYear;
             //instead of returning the result we stored it in the object
             //usually the best way
+            //literally create the new property/key in this function
         }
     };
 
