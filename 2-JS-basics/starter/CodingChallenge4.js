@@ -16,8 +16,15 @@ var john = {
     }
 };
 
+console.log( john, mark);
+
 mark.calcBMI();
 john.calcBMI();
+
+//also possible to RETURN IN THE FUNCTION the respective BMIs
+//and instead of comparing th BMI propery, we compare the calc functions
+
+console.log( john, mark);
 
 if (john.BMI > mark.BMI) {
     console.log(john.fullName + " has the higher BMI at " + john.BMI);
