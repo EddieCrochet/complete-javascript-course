@@ -53,3 +53,25 @@ var mark = {
 mark.tipCalc();
 john.tipCalc();
 console.log(john, mark);
+
+function calcAvg(_arr) {
+    var sum = 0;
+    for(let i = 0; i < _arr.length; i++) {
+        sum += _arr[i];
+    }
+    var average = sum/_arr.length;
+    return average;
+    //probably should have made this variable an additional property
+    //of each respective object, but this will do
+}
+
+console.log(calcAvg(mark.tips));
+console.log(calcAvg(john.tips));
+
+if (calcAvg(mark.tips) > calcAvg(john.tips)) {
+    console.log("Mark's family paid more tips averaging "
+     + calcAvg(mark.tips) + ".");
+} else {
+    console.log("John's family paid more tips averaging "
+     + calcAvg(john.tips) + ".");
+}
