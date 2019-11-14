@@ -1,14 +1,33 @@
 ///////////////////////////////////////
 // Lecture: Hoisting
 
+calculateAge(1965);
+//HOISTING only works for function declarations?
+function calculateAge(year) {
+    console.log(2016 - year);
+}
+
+//function expressions like this do not follow hoisting
+var retirement = function(year) {
+    console.log(65 - (2016 - year));
+}
+retirement(1990);
 
 
+//variables
+//before returns an undefined instead of an error
+console.log(age);
+var age = 23;
+console.log(age);
 
-
-
-
-
-
+function foo() {
+    var age = 65;
+    //this age gets executed from the foo context
+    console.log(age);
+}
+foo();
+//this age gets printed from the global execution context
+console.log(age);
 
 
 
