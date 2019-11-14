@@ -1,6 +1,7 @@
 ///////////////////////////////////////
 // Lecture: Hoisting
 
+/*
 calculateAge(1965);
 //HOISTING only works for function declarations?
 function calculateAge(year) {
@@ -29,7 +30,7 @@ foo();
 //this age gets printed from the global execution context
 console.log(age);
 
-
+*/
 
 
 
@@ -77,7 +78,8 @@ function first() {
 
 function third() {
     var d = 'John';
-    console.log(a + b + c + d);
+    //console.log(a + b + c + d);
+    console.log(a+d);
 }
 */
 
@@ -86,11 +88,40 @@ function third() {
 ///////////////////////////////////////
 // Lecture: The this keyword
 
+//below code shows the window in the browser
+//console.log(this);
 
+calculateAge(1985);
 
+function calculateAge(year) {
+    console.log(2016 - year);
+    console.log(this);
+}
 
+var john = {
+    name: 'John',
+    yearOfBirth: 1990,
+    calculateAge: function() {
+        console.log(this);
+        console.log(2016 -this.yearOfBirth);
 
+        function innerFunction() {
+            //this is a regular function call 
+            //so this keyword still points to the window
+            //even though it is within a function
+            console.log(this);
+        }
+        innerFunction();
+    }
+}
 
+john.calculateAge();
 
+var mike = {
+    name: 'Mike',
+    yearOfBirth: 1984,
+};
 
-
+//METHOD BORROWING
+mike.calculateAge = john.calculateAge;
+mike.calculateAge();
