@@ -25,3 +25,5 @@ var x = document.querySelector('#score-0').textContent;
 //dont set because its just to read the value and store later
 
 console.log(x);
+
+document.querySelector('.dice').style.display = 'none';
