@@ -15,16 +15,16 @@ player looses his current score when one of them is a 1. (Hint: you will
     for the first one.)
 */
 
-var scores, roundScore, activePlayer, gamePlaying, previousRoll;
+var scores, roundScore, activePlayer,
+ gamePlaying, previousRoll, input;
 
 init();
+
 
 document.querySelector('.btn-roll').addEventListener('click', function () {
     if (gamePlaying) {
         //1. need a random number
         var dice = Math.floor(Math.random() * 6) + 1;
-        console.log(dice);
-        console.log(previousRoll);
 
         //2. display result
         var diceDOM = document.querySelector('.dice');
@@ -37,23 +37,29 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
             // Update UI
             document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
             nextPlayer();
-        } else {
+        } else if (dice !== 1) {
             //3. update the round score IF the rolled # was NOT a 1
-            if (dice !== 1) {
-                previousRoll = dice;
-                //Add score
-                roundScore += dice;
-                document.querySelector('#current-' + activePlayer).textContent = roundScore;
-            } else {
-                //Next player
-                nextPlayer();
-            }
+            previousRoll = dice;
+            //Add score
+            roundScore += dice;
+            document.querySelector('#current-' + activePlayer).textContent = roundScore;
+        } else {
+            //Next player
+            nextPlayer();
         }
+
     }
 });
 
 document.querySelector('.btn-hold').addEventListener('click', function () {
     if (gamePlaying) {
+        input = document.getElementById('scoreToWin').value;
+        
+        if(input) {
+            winScore = input;
+        } else {
+            winScore = 100;
+        }
         // Add CURRENTscore to GLOBAL score
         scores[activePlayer] += roundScore;
 
@@ -61,7 +67,7 @@ document.querySelector('.btn-hold').addEventListener('click', function () {
         document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
 
         // Check if player won the game
-        if (scores[activePlayer] >= 20) {
+        if (scores[activePlayer] >= winScore) {
             document.querySelector('#name-' + activePlayer).textContent = 'Winner!';
             document.querySelector('.dice').style.display = 'none';
             document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
