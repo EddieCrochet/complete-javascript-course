@@ -39,7 +39,7 @@ console.log(mark.lastName);
 //Object.create
 
 //different from using function constructors
-
+/*
 var personProto = {
     calculateAge: function() {
         console.log(2019 - this.yearOfBirth);
@@ -57,3 +57,8 @@ var jane = Object.create(personProto,
         yearOfBirth: {value: 1969},
         job: { value: 'designer' }
     });
+    */
+
+    //Primitives vs Objects
+
+    
