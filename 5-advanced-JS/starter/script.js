@@ -61,6 +61,7 @@ var jane = Object.create(personProto,
 
     //Primitives vs Objects
 
+    /*
     //primitives
     var a =23;
     var b = a;
@@ -95,3 +96,30 @@ var jane = Object.create(personProto,
 
     console.log(age);
     console.log(obj.city);
+    */
+
+    ///////////////
+    // Passing Functions as Arguments
+
+    var years = [1990, 1965, 1937, 2005, 1998];
+
+    function arrayCalc(arr, fn) {
+        var arrRe = [];
+        for(var i = 0; i < arr.length; i++) {
+            arr.push(fn(arr[i]));
+        }
+        return arrRes;
+    }
+
+    function calculateAge(el) {
+        return 2019 - el;
+    }
+
+    function isLegal(el) {
+        return el >= 18;
+    }
+
+    var ages = arrayCalc(years, calculateAge);
+    console.log(ages);
+    var fullAges = arrCalc(ages, isLegal);
+    console.log(fullAges);
