@@ -119,7 +119,18 @@ var jane = Object.create(personProto,
         return el >= 18;
     }
 
+    function maxHeartRate(el) {
+        if (el >= 18 && el <= 81) {
+            return Math.round(206.9 - (0.67 * el));
+        } else {
+            return -1;
+        }
+    }
+
     var ages = arrayCalc(years, calculateAge);
-    console.log(ages);
     var fullAges = arrCalc(ages, isLegal);
+    var rates = arrayCalc(ages, max)
+    
+    console.log(ages);
     console.log(fullAges);
+    console.log(rates);
