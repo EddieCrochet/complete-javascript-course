@@ -140,6 +140,7 @@ var jane = Object.create(personProto,
     //////////////
     // Functions returning functions
 
+    /*
     function interviewQuestion(job) {
         if ( job === 'designer') {
             return function(name) {
@@ -171,3 +172,27 @@ var jane = Object.create(personProto,
     //pass teacher to interviewQuestion
     //then pass mark to that anon function
     interviewQuestion('teacher')('Mark');
+    */
+
+    //////////////
+    // IIFE
+
+    /*
+    function game() { 
+        var score = Math.random() * 10;
+        console.log(score>= 5);
+    }
+    game();
+    */
+
+    (function () {
+        var score = Math.random() * 10;
+        console.log(score>= 5);
+    })();
+
+    //console.log(score);
+
+    (function (goodluck) {
+        var score = Math.random() * 10;
+        console.log(score>= 5 - goodluck);
+    })(5);
