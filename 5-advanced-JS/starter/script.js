@@ -202,6 +202,8 @@ var jane = Object.create(personProto,
     //////////////////
     // closures:::
 
+    /*
+
     function retirement(retirementAge) {
         var a = ' years left until retirement.';
         return function(yearOfBirth) {
@@ -219,6 +221,7 @@ var jane = Object.create(personProto,
     retirementUS(1990);
 
     //retirement(66)(1990);
+    */
 
     /*
  function interviewQuestion(job) {
@@ -275,6 +278,21 @@ var john = {
             console.log('Hey! What\'s up? I\'m ' + this.name + ', I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old. Have a nice ' + timeOfDay);
         }
     }
+};
+
+var emily = {
+    name: 'Emily',
+    age: 35,
+    job: 'designer'
 }
 
 john.presentation('friendly', 'morning');
+
+john.presentation.call(emily, 'friendly', 'afternoon');
+
+//john.presentation.apply(emily,
+     //['friendly', 'afternoon']);
+
+var johnFriendly = john.presentation.bind(john, 'friendly');
+
+johnFriendly('morning');
