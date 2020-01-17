@@ -35,3 +35,12 @@ Question.prototype.displayQuestion = function() {
 }
 
 ranQues.displayQuestion(ranQues);
+
+var userInput = prompt("Enter the number of your answer to the question here",
+ "Right here");
+
+if(userInput == ranQues.correctAnswer) {
+    console.log("That is correct");
+} else {
+    console.log("NOPE. You're wrong and dumb");
+}
