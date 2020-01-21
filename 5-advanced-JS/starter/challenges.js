@@ -2,8 +2,8 @@
 
 ///MY SOLUTION
 //could not figure out what tey wanted with the expert edition
-/*
 
+/*
 function Question(_question, _answers, _correctAnswer) {
     this.question = _question;
     this.answers = _answers;
@@ -23,15 +23,17 @@ var questions = new Array(question1, question2, question3);
 
 var ranNum = Math.floor((Math.random() * 3) + 1);
 console.log(ranNum);
-var ranQues;
 
-if(ranNum == 1) {
-    ranQues = question1;
-} else if (ranNum == 2) {
-    ranQues = question2;
-} else {    
-    ranQues = question3;
-};
+
+//if(ranNum == 1) {
+  //  ranQues = question1;
+//} else if (ranNum == 2) {
+  //  ranQues = question2;
+//} else {    
+   // ranQues = question3;
+//};
+
+//dont need this. use the array, you dingus
 
 Question.prototype.displayQuestion = function() {
     console.log(this.question);
@@ -41,21 +43,52 @@ Question.prototype.displayQuestion = function() {
     console.log("3: " + this.answers[3]);
 }
 
-ranQues.displayQuestion(ranQues);
+questions[ranNum].displayQuestion();
+//ranQues.displayQuestion(ranQues);
+//no
 
 var userInput = prompt("Enter the number of your answer to the question here",
  "Right here");
 
-if(userInput == ranQues.correctAnswer) {
+if(userInput == questions[ranNum].correctAnswer) {
     console.log("That is correct");
 } else {
     console.log("NOPE. You're wrong and dumb");
 }
+
 */
 
 
 
-
 //their solution
+//////////////////////
 
 
+function Question(question, answers, correct) {
+    this.question = question;
+    this.answers = answers;
+    this.correct = correct;
+}
+
+Question.prototype.displayQuestion = function() {
+    console.log(this.question);
+
+    for (var i = 0; i < this.answers.length; i++) {
+        console.log(i + ": " + this.answers[i])
+    }
+}
+
+var q1 = new Question('Is Javascript the coolest prog language ever?',
+['Yes', 'No'], 0);
+
+var q2 = new Question('What is the name of this course\'s teacher?',
+ ['John', 'Michael', 'Jonas'], 1);
+
+ var q3 = new Question('What does best describe coding?', 
+ ['boring', 'hard', 'fun', 'tedius'], 2);
+
+ var questions = [q1, q2, q3];
+
+ var n = Math.floor(Math.random() * questions.length);
+
+ questions[n].displayQuestion();
