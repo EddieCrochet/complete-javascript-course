@@ -1,3 +1,9 @@
+ 
+
+///MY SOLUTION
+//could not figure out what tey wanted with the expert edition
+/*
+
 function Question(_question, _answers, _correctAnswer) {
     this.question = _question;
     this.answers = _answers;
@@ -18,6 +24,7 @@ var questions = new Array(question1, question2, question3);
 var ranNum = Math.floor((Math.random() * 3) + 1);
 console.log(ranNum);
 var ranQues;
+
 if(ranNum == 1) {
     ranQues = question1;
 } else if (ranNum == 2) {
@@ -44,3 +51,11 @@ if(userInput == ranQues.correctAnswer) {
 } else {
     console.log("NOPE. You're wrong and dumb");
 }
+*/
+
+
+
+
+//their solution
+
+
