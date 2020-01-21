@@ -66,6 +66,7 @@ if(userInput == questions[ranNum].correctAnswer) {
 //include all code in one function so that no code can ever over ride it
 //this is an IIFE
 //IMMEDIATELY-INVOKED FUNCTION EXPRESSION
+/*
 (function() {
     function Question(question, answers, correct) {
         this.question = question;
@@ -108,4 +109,62 @@ if(userInput == questions[ranNum].correctAnswer) {
     
      questions[n].checkAnswer(answer);
 })();
+*/
 
+//EXPERT LEVEL
+
+
+(function() {
+    function Question(question, answers, correct) {
+        this.question = question;
+        this.answers = answers;
+        this.correct = correct;
+    }
+    
+    Question.prototype.displayQuestion = function() {
+        console.log(this.question);
+    
+        for (var i = 0; i < this.answers.length; i++) {
+            console.log(i + ": " + this.answers[i])
+        }
+    }
+    
+    Question.prototype.checkAnswer = function(ans) {
+        if (ans === this.correct) {
+            console.log('Correct Answer!');
+        } else {
+            console.log('Wrong answer, try again!');
+        }
+    }
+    
+    var q1 = new Question('Is Javascript the coolest prog language ever?',
+    ['Yes', 'No'], 0);
+    
+    var q2 = new Question('What is the name of this course\'s teacher?',
+     ['John', 'Michael', 'Jonas'], 1);
+    
+     var q3 = new Question('What does best describe coding?', 
+     ['boring', 'hard', 'fun', 'tedius'], 2);
+    
+
+     function nextQuestion() {
+        var questions = [q1, q2, q3];
+    
+        var n = Math.floor(Math.random() * questions.length);
+       
+        questions[n].displayQuestion();
+       
+        var answer = prompt('Please select the correct answer.');
+       
+        questions[n].checkAnswer(answer);
+
+
+        if(answer !== 'exit') {
+            questions[n].checkAnswer(parseInt(answer));
+            nextQuestion();
+        }
+     }
+    
+     nextQuestion();
+
+})();
