@@ -66,7 +66,7 @@ if(userInput == questions[ranNum].correctAnswer) {
 //include all code in one function so that no code can ever over ride it
 //this is an IIFE
 //IMMEDIATELY-INVOKED FUNCTION EXPRESSION
-/*
+
 (function() {
     function Question(question, answers, correct) {
         this.question = question;
@@ -109,11 +109,11 @@ if(userInput == questions[ranNum].correctAnswer) {
     
      questions[n].checkAnswer(answer);
 })();
-*/
+
 
 //EXPERT LEVEL
 
-
+/*
 (function() {
     function Question(question, answers, correct) {
         this.question = question;
@@ -145,12 +145,14 @@ if(userInput == questions[ranNum].correctAnswer) {
     
      var q3 = new Question('What does best describe coding?', 
      ['boring', 'hard', 'fun', 'tedius'], 2);
+
+     
+     var questions = [q1, q2, q3];
     
 
      function nextQuestion() {
-        var questions = [q1, q2, q3];
-    
         var n = Math.floor(Math.random() * questions.length);
+        console.log(n)
        
         questions[n].displayQuestion();
        
@@ -168,3 +170,5 @@ if(userInput == questions[ranNum].correctAnswer) {
      nextQuestion();
 
 })();
+
+*/
