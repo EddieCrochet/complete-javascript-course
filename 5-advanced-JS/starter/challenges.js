@@ -155,16 +155,12 @@ if(userInput == questions[ranNum].correctAnswer) {
     
         var answer = prompt('Please select the correct answer.');
     
-        questions[n].checkAnswer(parseInt(answer));
-
         if(answer !== 'exit'){
 
-            questions[n].checkAnswer(answer);
+            questions[n].checkAnswer(parseInt(answer));
 
             nextQuestion();
         }
-
-        nextQuestion();
      }
 
      nextQuestion();
