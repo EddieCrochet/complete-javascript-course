@@ -1,34 +1,64 @@
+
+
+//BUDGET CONTROLLER
 var budgetController = (function() {
-    var x = 23;
     
-    var add = function(a) {
-        return x + a;
-    }
-    return {
-        publicTest: function(b) {
-            //console.log(add(b));
-            //now that we are not accessing directly from the console
-            //we need to return the add function, instead of console.logging it
-            return add(b);
-        }
-    }
 })();
 
+
+//UI CONTROLLER
 var UIController = (function() {
 
-})();
-
-var controller = (function(budgetCtrl, UICtrl) {
-//budgetController.publicTest()
-//dont do this cause we would have to change name between modules
-    var z = budgetCtrl.publicTest(5);
+    //data structure to make it easier for us later on
+    var DOMStrings = {
+        inputType: '.add__type',
+        inputDescription: '.add__description',
+        inputValue: '.add__value',
+        inputBtn: '.add__btn'
+    };
 
     return {
-        anotherPublic: function() {
-            console.log(z);
-            //this way is only way we can have access to z variable from the 
-            //outside once the original function returns
+        getinput: function() {
+            return {
+                //will be either inc or exp
+                type: document.querySelector(DOMStrings.inputType).value,
+                description: document.querySelector(DOMStrings.inputDescription).value,
+                value: document.querySelector(DOMStrings.inputValue).value
+            };
+        },
+
+        getDOMStrings: function() {
+            return DOMStrings;
         }
+    };
+})();
+
+// GLOBAL APP CONTROLLER
+var controller = (function(budgetCtrl, UICtrl) {
+
+    var DOM = UICtrl.getDOMStrings();
+
+    var ctrlAddItem = function() {
+        //1. get the field data
+        var input = UICtrl.getinput();
+        console.log(input);
+
+        //2. add the item to budget controller
+
+        //3. add the new item to UI as well
+
+        //4. calculate the budget
+
+        //5. display the budget on the UI
     }
+
+    document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
+
+    //key press happens on global web page - any where in doc, no specific element
+    document.addEventListener('keypress', function(event) {
+        if (event.key === 13 || event.which === 13) {
+            ctrlAddItem();
+        }
+    });
 
 })(budgetController, UIController);
