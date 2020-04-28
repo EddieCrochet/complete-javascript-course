@@ -36,7 +36,20 @@ var UIController = (function() {
 // GLOBAL APP CONTROLLER
 var controller = (function(budgetCtrl, UICtrl) {
 
-    var DOM = UICtrl.getDOMStrings();
+    var setupEventListeners = function() {
+        var DOM = UICtrl.getDOMStrings();
+
+        document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
+
+        //key press happens on global web page - any where in doc, no specific element
+        document.addEventListener('keypress', function(event) {
+            if (event.key === 13 || event.which === 13) {
+                ctrlAddItem();
+            }
+        });
+    };
+
+
 
     var ctrlAddItem = function() {
         //1. get the field data
@@ -50,15 +63,15 @@ var controller = (function(budgetCtrl, UICtrl) {
         //4. calculate the budget
 
         //5. display the budget on the UI
+    };
+
+    return {
+        init: function() {
+            console.log('Application has started.');
+            setupEventListeners();
+        }
     }
 
-    document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
-
-    //key press happens on global web page - any where in doc, no specific element
-    document.addEventListener('keypress', function(event) {
-        if (event.key === 13 || event.which === 13) {
-            ctrlAddItem();
-        }
-    });
-
 })(budgetController, UIController);
+
+controller.init();
