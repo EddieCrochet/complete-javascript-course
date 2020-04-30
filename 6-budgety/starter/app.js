@@ -116,7 +116,7 @@ var UIController = (function() {
             newHtml = newHtml.replace('%value%', obj.value);
 
             // 3. insert the html into the dom
-            document.querySelector(element).insertAdjacentElement('beforeend', newHtml);
+            document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
         },
 
         getDOMStrings: function() {
