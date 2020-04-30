@@ -31,14 +31,35 @@ var budgetController = (function() {
         addItem: function(type, des, val) {
             var newItem, ID;
 
-            ID = 0;
+            //[1,2,3,4,5], next ID = 6
+            //ID = last ID + 1
+            
+            //create new id
+            if (data.allItems[type].length > 0) {
+                ID = data.allItems[type][data.allItems[type].length - 1].id + 1;
+            }else {
+                 ID = 0;
+             }
+            //id code for a new item
 
+            // create new item based on inc or exp type
             if (type === 'exp') {
                 newItem = new Expense(ID, des, val);
             } else if (type === 'inc') {
                 newItem = new Income(ID, des, val)
             }
-            
+
+            //push to data structure
+            data.allItems[type].push(newItem);
+            //now the moduke we are returning the callback to will have 
+            //access to the newItem variable
+
+            //return the new element
+            return newItem;
+        },
+        //just a function to run in the console to see if our data structure is working
+        testing: function() {
+            console.log(data);
         }
     };
 
@@ -91,11 +112,14 @@ var controller = (function(budgetCtrl, UICtrl) {
 
 
     var ctrlAddItem = function() {
+        var input, newItem;
+
         //1. get the field data
-        var input = UICtrl.getinput();
+        input = UICtrl.getinput();
         console.log(input);
 
         //2. add the item to budget controller
+        newItem = budgetCtrl.addItem(input.type, input.description, input.value);
 
         //3. add the new item to UI as well
 
