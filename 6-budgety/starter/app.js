@@ -119,6 +119,16 @@ var UIController = (function() {
             document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
         },
 
+        clearFields: function() {
+            var fields, fieldsArr;
+
+            fields = document.querySelectorAll(DOMStrings.inputDescription + ', ' + DOMStrings.inputValue);
+
+            //calls the slice method from the Array prototype so that we can 
+            //use on the newly created nodeList
+            fieldsArr = Array.prototype.slice.call(fields);
+        },
+
         getDOMStrings: function() {
             return DOMStrings;
         }
