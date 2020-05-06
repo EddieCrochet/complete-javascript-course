@@ -130,10 +130,14 @@ var UIController = (function() {
             //use on the newly created nodeList
             fieldsArr = Array.prototype.slice.call(fields);
 
-            frieldsArr.forEach(function(current, index, array) {
+            fieldsArr.forEach(function(current, index, array) {
                 //set the value back to empty to clear the field
-                current.value = ""
-            })
+                current.value = "";
+            });
+
+            //puts the focus/cursor on the description after fields clear 
+            //to make it easier to put in the next information
+            fieldsArr[0].focus();
         },
 
         getDOMStrings: function() {
@@ -173,9 +177,12 @@ var controller = (function(budgetCtrl, UICtrl) {
         //3. add the new item to UI as well
         UICtrl.addListItem(newItem, input.type);
 
-        //4. calculate the budget
+        //4. Clear the Fields
+        UICtrl.clearFields();
 
-        //5. display the budget on the UI
+        //5. calculate the budget
+
+        //6. display the budget on the UI
     };
 
     return {
