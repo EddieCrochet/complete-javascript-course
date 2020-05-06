@@ -122,11 +122,18 @@ var UIController = (function() {
         clearFields: function() {
             var fields, fieldsArr;
 
+            //this method returns a static nodeList repping the document's elements
+            //that match specified group of selectors
             fields = document.querySelectorAll(DOMStrings.inputDescription + ', ' + DOMStrings.inputValue);
 
             //calls the slice method from the Array prototype so that we can 
             //use on the newly created nodeList
             fieldsArr = Array.prototype.slice.call(fields);
+
+            frieldsArr.forEach(function(current, index, array) {
+                //set the value back to empty to clear the field
+                current.value = ""
+            })
         },
 
         getDOMStrings: function() {
