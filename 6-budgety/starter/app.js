@@ -51,7 +51,7 @@ var budgetController = (function() {
 
             //push to data structure
             data.allItems[type].push(newItem);
-            //now the moduke we are returning the callback to will have 
+            //now the module we are returning the callback to will have 
             //access to the newItem variable
 
             //return the new element
@@ -85,7 +85,7 @@ var UIController = (function() {
                 //will be either inc or exp
                 type: document.querySelector(DOMStrings.inputType).value,
                 description: document.querySelector(DOMStrings.inputDescription).value,
-                value: document.querySelector(DOMStrings.inputValue).value
+                value: parseFloat(document.querySelector(DOMStrings.inputValue).value)
             };
         },
 
@@ -162,7 +162,13 @@ var controller = (function(budgetCtrl, UICtrl) {
         });
     };
 
+    var updateBudget = function() {
+        //1. calculate the budget
 
+        //2. return the budget
+
+        //3. display the budget on the UI
+    };
 
     var ctrlAddItem = function() {
         var input, newItem;
@@ -171,7 +177,10 @@ var controller = (function(budgetCtrl, UICtrl) {
         input = UICtrl.getinput();
         console.log(input);
 
-        //2. add the item to budget controller
+        //only do the remaining steps if there is content in the input,
+        //it's a real number, AND it's not zero!!!
+        if(input.description !== "" && !isNaN(input.value) &&input.value > 0){
+            //2. add the item to budget controller
         newItem = budgetCtrl.addItem(input.type, input.description, input.value);
 
         //3. add the new item to UI as well
@@ -180,9 +189,11 @@ var controller = (function(budgetCtrl, UICtrl) {
         //4. Clear the Fields
         UICtrl.clearFields();
 
-        //5. calculate the budget
+        //5. calculate and update budget
+        updateBudget();
+        }
 
-        //6. display the budget on the UI
+        
     };
 
     return {
