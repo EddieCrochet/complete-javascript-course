@@ -15,6 +15,13 @@ var budgetController = (function() {
         this.value = value
     };
 
+    var calculateTotal = function(type) {
+        var sum = 0;
+        data.allItems[type].forEach(function(cur) {
+            sum += cur.value;
+        });
+    }
+
     //Here is the recommended data structure
     var data = {
         allItems: {
@@ -57,6 +64,16 @@ var budgetController = (function() {
             //return the new element
             return newItem;
         },
+        calculateBudget: function(){
+
+            // calculate total income and expenses
+// two of the same thing here with income and expenses - MAKE A FUNCTION
+// internal private function to help calculate
+            // calculate the budget: income - expenses
+
+            // calculate % of income that we have spent
+        },
+
         //just a function to run in the console to see if our data structure is working
         testing: function() {
             console.log(data);
