@@ -20,6 +20,7 @@ var budgetController = (function() {
         data.allItems[type].forEach(function(cur) {
             sum += cur.value;
         });
+        data.totals[type] = sum;
     }
 
     //Here is the recommended data structure
@@ -31,7 +32,9 @@ var budgetController = (function() {
         totals: {
             exp: 0,
             inc: 0
-        }
+        },
+        budget: 0,
+        percentage: -1
     }
 
     return {
@@ -67,11 +70,35 @@ var budgetController = (function() {
         calculateBudget: function(){
 
             // calculate total income and expenses
+            calculateTotal('exp');
+            calculateTotal('inc');
 // two of the same thing here with income and expenses - MAKE A FUNCTION
 // internal private function to help calculate
             // calculate the budget: income - expenses
+            data.budget = data.totals.inc - data.totals.exp;
 
             // calculate % of income that we have spent
+
+            if (data.totals.inc > 0) {
+                data.percentage = 
+                    Math.round((data.totals.exp / data.totals.inc) * 100);
+            } else {
+                //can not have zero percent of something
+                //just a placeholder to do something later to display this condition
+                data.percentage = -1;
+            }
+        },
+
+        //a method JUST for returning something from our data structure
+        getBudget: function() {
+            //best way to return multiple things is to return an entire object
+            //with properties of the data you are trying to pass through
+            return {
+                budget: data.budget,
+                totalInc: data.totals.inc,
+                totalExp: data.totals.exp,
+                percentage: data.percentage
+            }
         },
 
         //just a function to run in the console to see if our data structure is working
@@ -179,12 +206,16 @@ var controller = (function(budgetCtrl, UICtrl) {
         });
     };
 
+    //called each time we enter a new item
     var updateBudget = function() {
         //1. calculate the budget
+        budgetCtrl.calculateBudget();
 
         //2. return the budget
+        var budget = budgetCtrl.getBudget();
 
         //3. display the budget on the UI
+        console.log(budget);
     };
 
     var ctrlAddItem = function() {
@@ -192,7 +223,6 @@ var controller = (function(budgetCtrl, UICtrl) {
 
         //1. get the field data
         input = UICtrl.getinput();
-        console.log(input);
 
         //only do the remaining steps if there is content in the input,
         //it's a real number, AND it's not zero!!!
