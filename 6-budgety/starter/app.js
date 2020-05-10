@@ -223,7 +223,7 @@ var controller = (function(budgetCtrl, UICtrl) {
             }
         });
 
-        document.querySelector()
+        document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem);
 
     };
 
@@ -262,6 +262,10 @@ var controller = (function(budgetCtrl, UICtrl) {
         }
 
         
+    };
+
+    var ctrlDeleteItem = function(event) {
+        console.log(event.target);
     };
 
     return {
