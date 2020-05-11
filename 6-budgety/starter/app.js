@@ -147,12 +147,12 @@ var UIController = (function() {
             //this is to MARK our data being passed
             if (type === 'inc') {
                 element = DOMStrings.incomeContainer;
-                html = '<div class="item clearfix" id="income-%id%"> <div class="item__description">%description%</div> <div class="right clearfix">' + 
+                html = '<div class="item clearfix" id="inc-%id%"> <div class="item__description">%description%</div> <div class="right clearfix">' + 
                 '<div class="item__value">%value%</div> <div class="item__delete"> <button class="item__delete--btn">' + 
                 '<i class="ion-ios-close-outline"></i></button> </div> </div></div>'
             } else if (type === 'exp') {
                 element = DOMStrings.expensesContainer;
-                html = '<div class="item clearfix" id="expense-%id%"><div class="item__description">%description%</div><div class="right clearfix">' +
+                html = '<div class="item clearfix" id="exp-%id%"><div class="item__description">%description%</div><div class="right clearfix">' +
                     '<div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete">' +
                     '<button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div> </div></div>'
             }
@@ -217,6 +217,7 @@ var controller = (function(budgetCtrl, UICtrl) {
         document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
 
         //key press happens on global web page - any where in doc, no specific element
+        //I believe this was simply test code
         document.addEventListener('keypress', function(event) {
             if (event.key === 13 || event.which === 13) {
                 ctrlAddItem();
@@ -265,7 +266,23 @@ var controller = (function(budgetCtrl, UICtrl) {
     };
 
     var ctrlDeleteItem = function(event) {
-        console.log(event.target);
+        var itemID, splitID, type, ID;
+        //not the cleanest but its ok since I hard coded my html for this section into this js page
+        itemID = event.target.parentNode.parentNode.parentNode.parentNode.id;
+
+        if (itemID) {
+            //inc-1
+            splitID = itemID.split('-');
+            type = splitID[0];
+            ID = splitID[1];
+
+            //1. delete item from data structure
+
+            //2. delete item from UI
+
+            //3. Update and show new budget
+
+        }
     };
 
     return {
