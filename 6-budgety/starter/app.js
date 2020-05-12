@@ -185,6 +185,14 @@ var UIController = (function() {
             document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
         },
 
+        deleteListItem: function(selectorID) {
+
+            var el = document.getElementById(selectorID);
+            el.parentNode.removeChild(el);
+            //super weird, but this is how it works
+            //select it, and then pass in that same selection
+        },
+
         clearFields: function() {
             var fields, fieldsArr;
 
@@ -244,7 +252,7 @@ var controller = (function(budgetCtrl, UICtrl) {
 
     };
 
-    //called each time we enter a new item
+    //called each time we enter or delete an item
     var updateBudget = function() {
         //1. calculate the budget
         budgetCtrl.calculateBudget();
@@ -297,8 +305,10 @@ var controller = (function(budgetCtrl, UICtrl) {
             budgetCtrl.deleteItem(type, ID);
 
             //2. delete item from UI
+            UICtrl.deleteListItem(itemID);
 
             //3. Update and show new budget
+            updateBudget();
 
         }
     };
