@@ -334,7 +334,7 @@ var UIController = (function() {
         changedType: function() {
             
             var fields = document.querySelectorAll(
-                DOMStrings.inputType, + ',' +
+                DOMStrings.inputType + ',' +
                 DOMStrings.inputDescription + ',' +
                 DOMStrings.inputValue
             );
