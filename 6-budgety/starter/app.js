@@ -209,6 +209,13 @@ var UIController = (function() {
 
     };
 
+    var nodeListForeach = function(list, callback) {
+        //creating a reusable foreach loop for node lists
+        for (var i = 0; i < list.length; i++) {
+            callback(list[i], i);
+        }
+    };
+
     return {
         getinput: function() {
             return {
@@ -298,13 +305,6 @@ var UIController = (function() {
             //this selector creates a node list
             var fields = document.querySelectorAll(DOMStrings.expensesPercLabel);
 
-            var nodeListForeach = function(list, callback) {
-                //creating a reusable foreach loop for node lists
-                for (var i = 0; i < list.length; i++) {
-                    callback(list[i], i);
-                }
-            };
-
             nodeListForeach(fields, function(current, index) {
                 //now have access to current and index because we passed them into the callabck
 
@@ -331,6 +331,24 @@ var UIController = (function() {
             document.querySelector(DOMStrings.dateLabel).textContent = months[month] + ' ' + year;
         },
 
+        changedType: function() {
+            
+            var fields = document.querySelectorAll(
+                DOMStrings.inputType, + ',' +
+                DOMStrings.inputDescription + ',' +
+                DOMStrings.inputValue
+            );
+
+            nodeListForeach(fields, function(cur) {
+                //toggle will remove the class if there and vice versa
+                console.log(fields);
+                cur.classList.toggle('red-focus');
+            });
+
+            document.querySelector(DOMStrings.inputBtn).classList.toggle('red');
+
+        },
+
         getDOMStrings: function() {
             return DOMStrings;
         }
@@ -354,6 +372,8 @@ var controller = (function(budgetCtrl, UICtrl) {
         });
 
         document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem);
+
+        document.querySelector(DOM.inputType).addEventListener('change', UICtrl.changedType);
 
     };
 
