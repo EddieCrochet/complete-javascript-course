@@ -24,6 +24,8 @@ console.log(name6);
 //ES5
 function driversLicense5(passedTest) {
     if (passedTest) {
+        //hoisted to undefined below
+        console.log(firstName);
         var firstName = 'John';
         var yearOfBirth = 1990;
     }
@@ -36,13 +38,32 @@ driversLicense5(true);
 
 //ES6
 function driversLicense6(passedTest) {
-    if (passedTest) {
-        let firstName = 'John';
-        const yearOfBirth = 1990;
-    }
+
+    //firstName is not defined error
+    //console.log(firstName);
+    let firstName;
+    const yearOfBirth = 1990;
+
+        if (passedTest) {
+            firstName = 'John';
+        }
+
     console.log(firstName + ', born in ' + 
         yearOfBirth + 
         ', is now officially allowed to drive a car.');
 }
 
 driversLicense6(true);
+
+
+
+
+var i = 23;
+
+for (var i = 0; i < 5; i++) {
+    console.log(i);
+}
+
+//scope makes this i let be 23 but 5 if var
+//does not change the var outside the block
+console.log(i);
