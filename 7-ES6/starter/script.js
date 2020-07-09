@@ -91,6 +91,7 @@ console.log(c);
 */
 
 
+/*
 /////////////////
 //Strings
 
@@ -114,7 +115,35 @@ console.log(n.endsWith('th'));
 console.log(n.includes('8'));
 console.log(`${firstName} `.repeat(5));
 
+*/
+
+////////
+// Arrow Functions
+
+const years = [1990, 1965, 1982, 1937];
+
+//ES5
+var ages5 = years.map(function(el) {
+    return 2016 - el;
+    //these numbers will be stored in the ages5 array that was just created with the map
+});
+console.log(ages5);
 
 
+//ES6
+let ages6 = years.map(el => 2016 - el);
+//same as above but for ES6!!
+console.log(ages6);
 
+//form for multiple arguments
+ages6 = years.map((el, index) => `Age element 
+${index + 1}: ${2016 - el}.`);
+console.log(ages6); 
 
+ages6 = years.map((el, index) => {
+    const now = new Date().getFullYear();
+    const age = now - el;
+    return `Age element
+    ${index + 1}: ${age}.`
+});
+console.log(ages6);
