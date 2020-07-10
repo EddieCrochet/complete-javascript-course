@@ -4,23 +4,31 @@ const url = require('url');
 
 const json = fs.readFileSync(`${__dirname}/data/data.json`, 'utf-8');
 const laptopData = JSON.parse(json);
+//laptopData is actually na array of the laptops
 
 
 //callback function gets called everytime someone accesses the server
 const server = http.createServer((req, res) => {
 
     const pathName = url.parse(req.url, true).pathname
-    const query = url.parse(req.url, true).query;
+    //this is how you read the ID from the url
+    const id = url.parse(req.url, true).query.id;
 
     console.log(url.parse(req.url, true));
 
     if (pathName === '/products' || pathName === '/'){
+
         res.writeHead(200, { 'Content-Type': 'text/html'});
         res.end('This is the PRODUCTS page!');
-    } else if (pathName === '/laptop') {
+
+    }
+     else if (pathName === '/laptop' && id < laptopData.length) {
+
         res.writeHead(200, { 'Content-Type': 'text/html'});
-        res.end('This is the LAPTOP page!');
+        res.end(`This is the LAPTOP page for laptop ${id}`);
+
     } else {
+
         res.writeHead(404, { 'content-Type': 'text/html'});
         res.end('URL was not found on the server!');
     }
