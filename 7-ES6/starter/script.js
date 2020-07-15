@@ -152,3 +152,90 @@ console.log(ages6);
 
 // Arrow Functions 2:
 
+/*
+//ES5
+var box5 = {
+    color: 'green',
+    position: 1,
+    clickMe: function() {
+
+        var self = this;
+        //set up this keyword so it points to the object and not the window in our callback function
+        document.querySelector('.green')
+        .addEventListener('click', function() {
+            var str = 'This is box number ' + self.position +
+            ' and it is ' + self.color;
+            alert(str);
+        })
+    }
+}
+box5.clickMe();
+//calling this method adds the event listener to the html
+*/
+
+//ES6
+const box6 = {
+    color: 'green',
+    position: 1,
+    clickMe: function() {
+        document.querySelector('.green')
+        .addEventListener('click', () =>  {
+            var str = 'This is box number ' + this.position +
+            ' and it is ' + this.color;
+            //with es6, this in a callback refers to object
+            alert(str);
+        })
+    }
+}
+box6.clickMe();
+
+/*
+const box66 = {
+    color: 'green',
+    position: 1,
+    clickMe: () => {
+        //NOW the this is gonna point back to the window
+        document.querySelector('.green')
+        .addEventListener('click', () =>  {
+            var str = 'This is box number ' + this.position +
+            ' and it is ' + this.color;
+            //with es6, this in a callback refers to object
+            alert(str);
+        })
+    }
+}
+box66.clickMe();
+*/
+
+//ES5
+function Person(name) {
+    this.name = name;
+}
+
+Person.prototype.myFriends5 = 
+    function(friends) {
+
+        var arr = friends.map(function(el) {
+            return this.name + ' is friends with ' + el;
+        }.bind(this));
+        console.log(arr);
+}
+
+var friends = ['Bob', 'Jane', 'Mark'];
+//new Person('John').myFriends5(friends);
+
+//ES6
+function Person(name) {
+    this.name = name;
+}
+
+Person.prototype.myFriends6 = 
+    function(friends) {
+
+        var arr = friends.map(el => 
+            `${this.name} is friends with ${el}`
+        );
+        console.log(arr);
+}
+
+new Person('Mike').myFriends6(friends);
