@@ -172,7 +172,7 @@ var box5 = {
 box5.clickMe();
 //calling this method adds the event listener to the html
 */
-
+/*
 //ES6
 const box6 = {
     color: 'green',
@@ -189,7 +189,7 @@ const box6 = {
 }
 box6.clickMe();
 
-/*
+
 const box66 = {
     color: 'green',
     position: 1,
@@ -208,6 +208,7 @@ box66.clickMe();
 */
 
 //ES5
+/*
 function Person(name) {
     this.name = name;
 }
@@ -239,3 +240,41 @@ Person.prototype.myFriends6 =
 }
 
 new Person('Mike').myFriends6(friends);
+*/
+
+////////////
+// Destructuring
+
+// ES5
+var john = ['John', 26];
+var name1 = john[0];
+var age1 = john[1];
+
+// ES6
+const[name, age] = ['John', 26];
+console.log(name);
+console.log(age);
+
+const obj = {
+    firstName: 'John',
+    lastName: 'Smith'
+};
+
+//these consts store the data outside of the object using destructuring
+
+const {firstName, lastName} = obj;
+console.log(firstName);
+console.log(lastName);
+
+const {firstName: a, lastName: b} = obj;
+console.log(a, b);
+
+function calcAgeRetirement(year) {
+    const age = new Date().getFullYear() - year;
+    return [age, 65 - age];
+    //the second return value will be refered to as retirement due to the following code
+}
+
+const [age2, retirement] = calcAgeRetirement(1990);
+console.log(age2);
+console.log(retirement);
