@@ -283,6 +283,7 @@ console.log(retirement);
 /////////////////////
 // Arrays
 
+/*
 const boxes = document.querySelectorAll('.box');
 
 // ES5
@@ -300,7 +301,7 @@ boxesArr6.forEach(cur =>
     cur.style.backgroundColor = 'dodgerblue');
 
     
-    /*
+    
 //ES5
 for(var i = 0; i < boxesArr5.length; i++) {
     if(boxesArr5[i].className === 'box blue') {
@@ -311,6 +312,7 @@ for(var i = 0; i < boxesArr5.length; i++) {
 }
 */
 
+/*
 //ES6
 for (const cur of boxesArr6) {
     if (cur.className.includes('blue')) {
@@ -336,4 +338,36 @@ console.log(ages[full.indexOf(true)]);
 //new function we can use to fin an index instead of map
 console.log(ages.findIndex(cur => cur >= 18));
 console.log(ages.find(cur => cur >= 18));
+*/
 
+/////////////////
+//Spread Operator
+
+function addFourAges (a, b, c, d) {
+    return a + b + c + d;
+}
+
+var sum1 = addFourAges(18, 30, 12, 21);
+console.log(sum1);
+
+var ages = [18, 30, 12, 21];
+var sum2 = addFourAges.apply(null, ages);
+console.log(sum2);
+
+//ES6
+const sum3 = addFourAges(...ages);
+console.log(sum3);
+
+const familySmith = ['John', 'Jane', 'Mark'];
+const familyMiller = ['Mary', 'Bob', 'Ann'];
+const bigFamily = [...familyMiller, 'Lily', ...familySmith];
+console.log(bigFamily);
+
+const h = document.querySelector('h1');
+const boxes = document.querySelectorAll('.box');
+const all = [h, ...boxes];
+
+console.log(all);
+console.log(Array.from(all));
+
+Array.from(all).forEach(cur => cur.style.color = 'purple');
