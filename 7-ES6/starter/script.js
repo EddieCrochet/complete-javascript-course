@@ -286,14 +286,35 @@ console.log(retirement);
 const boxes = document.querySelectorAll('.box');
 
 // ES5
-/*
+//nodeList to array ES5
 var boxesArr5 = Array.prototype.slice.call(boxes);
 boxesArr5.forEach(function(cur) {
     cur.style.backgroundColor = 'dodgerblue';
 })
-*/
+
 
 // ES6
 //this new method transforms the nodeList into an array
-Array.from(boxes).forEach(cur => 
+const boxesArr6 = Array.from(boxes);
+boxesArr6.forEach(cur => 
     cur.style.backgroundColor = 'dodgerblue');
+
+    
+    /*
+//ES5
+for(var i = 0; i < boxesArr5.length; i++) {
+    if(boxesArr5[i].className === 'box blue') {
+        //continue skips iteration of loop and then goes on
+        continue;
+    }
+    boxesArr5[i].textContent = 'I changed to blue!';
+}
+*/
+
+//ES6
+for (const cur of boxesArr6) {
+    if (cur.className.includes('blue')) {
+        continue;
+    }
+    cur.textContent = 'I changed to blue!';
+}
