@@ -343,6 +343,7 @@ console.log(ages.find(cur => cur >= 18));
 /////////////////
 //Spread Operator
 
+/*
 function addFourAges (a, b, c, d) {
     return a + b + c + d;
 }
@@ -371,3 +372,50 @@ console.log(all);
 console.log(Array.from(all));
 
 Array.from(all).forEach(cur => cur.style.color = 'purple');
+*/
+
+//////////////
+// Rest Parameters
+
+/*
+//ES5
+function isFullAge5() {
+    //console.log(arguments);
+    var argsArr = Array.prototype.slice.call(arguments);
+
+    argsArr.forEach(function(cur) {
+        console.log((2019 - cur) >= 18);
+    })
+}
+//isFullAge5(1990, 1962, 2004); 
+//isFullAge5(1990, 1962, 2004, 2016, 2002); 
+
+//ES6
+//USE REST PARAMETER INSTEAD OF NO ARGS
+function isFullAge6(...years) {
+    years.forEach(cur => console.log((2019 - cur) >= 18));
+}
+isFullAge6(1990, 2002, 1965, 2016, 1987);
+*/
+
+
+//ES5
+function isFullAge5(limit) {
+    //THIS IS HW WAS CAN SEPERATE THE FIRST ENTRY FROM THE REST OF AN ARRAY PASSED INTO A FUNCTION
+    console.log(arguments);
+    var argsArr = Array.prototype.slice.call(arguments, 1);
+    console.log(argsArr);
+
+    argsArr.forEach(function(cur) {
+        console.log((2019 - cur) >= limit);
+    })
+}
+isFullAge5(16, 1990, 1962, 2004); 
+//isFullAge5(1990, 1962, 2004, 2016, 2002); 
+
+//ES6
+//USE REST PARAMETER INSTEAD OF NO ARGS
+function isFullAge6(limit, ...years) {
+    years.forEach(cur => console.log((2019 - cur) >= limit));
+}
+isFullAge6(15, 1990, 2002, 1965, 2016, 1987);
