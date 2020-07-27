@@ -37,10 +37,12 @@ let sumOfAges = 0;
 parksArr.forEach(function(cur) {
     console.log(cur.getTreeDensity());
     sumOfAges += cur.age;
+    if(cur.numberOfTrees > 1000) {
+        console.log(`${cur.name} has more than 1000 trees.`);
+    }
 });
 
 var averageAge = sumOfAges/parksArr.length;
 console.log(`Our ${parksArr.length} parks have an 
 average age of ${averageAge} years.`);
-
 
