@@ -28,6 +28,11 @@ const park2 = new Park('Devlin Park', 23, 223, 13);
 const park3 = new Park('Kneaele Park', 5437, 3438, 36);
 const park4 = new Park('Gourdge Park', 7, 10523, 437);
 
+const st1 = new Street('Toma St', 233, 'huge');
+const st2 = new Street('soma St', 23, 'normal');
+const st3 = new Street('fona St', 3, 'tiny');
+const st4 = new Street('rona St', 2, 'tiny');
+
 var parksArr = [];
 parksArr.push(park1, park2, park3, park4);
 //console.warn(parksArr);
@@ -46,3 +51,17 @@ var averageAge = sumOfAges/parksArr.length;
 console.log(`Our ${parksArr.length} parks have an 
 average age of ${averageAge} years.`);
 
+var stArr = [];
+stArr.push(st1, st2, st3, st4);
+//console.warn(stArr);
+
+let totalLength = 0;
+
+stArr.forEach(function(cur) {
+    totalLength += cur.length;
+})
+
+let averageStLength = totalLength/stArr.length;
+
+console.log(`Our ${stArr.length} streets have a total
+length of ${totalLength} m, with an average of ${averageStLength} m`);
