@@ -59,6 +59,7 @@ let totalLength = 0;
 
 stArr.forEach(function(cur) {
     totalLength += cur.length;
+    console.log(`${cur.name} is a ${cur.sizeClassification} street.`);
 })
 
 let averageStLength = totalLength/stArr.length;
