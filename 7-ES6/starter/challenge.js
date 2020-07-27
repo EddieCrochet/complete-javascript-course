@@ -32,6 +32,15 @@ var parksArr = [];
 parksArr.push(park1, park2, park3, park4);
 //console.warn(parksArr);
 
+let sumOfAges = 0;
+
 parksArr.forEach(function(cur) {
     console.log(cur.getTreeDensity());
+    sumOfAges += cur.age;
 });
+
+var averageAge = sumOfAges/parksArr.length;
+console.log(`Our ${parksArr.length} parks have an 
+average age of ${averageAge} years.`);
+
+
