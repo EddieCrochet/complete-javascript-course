@@ -25,6 +25,7 @@
         first();
         */
 
+/*
         function getRecipe() {
             setTimeout(() => {
                 const recipeID = [345, 872, 254, 987];
@@ -42,6 +43,49 @@
             }, 1500);
         }
         getRecipe();
+        */
+
+        //executor function
+        const getIDs = new Promise((resolve, reject) => {
+            setTimeout(() => {})
+            //after 1.5 seconds, we want to say that the promise
+            //was successful and we want to return this data here
+            resolve([345, 872, 254, 987])
+        }, 1500);
+
+        const getRecipie = recID => {
+            return new Promise((resolve, reject) => {
+                setTimeout(ID => {
+                    const recipe = {title: 'Fresh tomato Pasta', publisher: 'Jonas'};
+                    resolve(`${ID}: ${recipe.title}`);
+                }, 1500, recID);
+            })
+        };
+
+        const getRelated = publisher => {
+          return new Promise((resolve, reject) => {
+              setTimeout(pub => {
+                const recipe = {title: 'Italian Pizza', publisher: 'Jonas'};
+                resolve(`${pub}: ${recipe}`);
+              }, 1500, publisher);
+          })  
+        };;
+
+// the argument we pass into the function below will be the
+//result of the successful promise
+        getIDs.then(IDs => {
+            console.log(IDs);
+            return getRecipie(IDs[2]);
+        })
+        .then(recipie => {
+            console.log(recipie);
+            return getRelated('Jonas');
+        }).then(recipie => {
+            console.log(recipie);
+        })
+        .catch(error => {
+            console.log("Error!");
+        });
 
     </script>
 </body>
