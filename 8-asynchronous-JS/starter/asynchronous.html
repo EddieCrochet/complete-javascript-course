@@ -46,6 +46,7 @@
         */
 
         //executor function
+        /*
         const getIDs = new Promise((resolve, reject) => {
             setTimeout(() => {})
             //after 1.5 seconds, we want to say that the promise
@@ -70,6 +71,7 @@
               }, 1500, publisher);
           })  
         };;
+        */
 
 // the argument we pass into the function below will be the
 //result of the successful promise
@@ -92,6 +94,7 @@
         //same as code above, but using async/await function
         //allows us to consume promises without all the callbacks
         //function runs constantly in the background
+        /*
         async function getRecipesAW() {
             //the await property stops code from executing until the promise is fulfilled
             const IDs = await getIDs;
@@ -104,6 +107,18 @@
             return recipe;
         }
         getRecipesAW().then(result => console.log(`${result} is the best ever!`));
+        */
+
+//pass in the url of the api we are trying to fetch
+//js fetch api gets data and returns a promise
+        fetch("https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/2487956/")
+        .then(result => {
+            //the data that gets fetched from the ajax request will be called result in this function
+            console.log(result);
+            //now have to read object into JSON
+        })
+        .catch(error => console.log(error));
+
 
     </script>
 </body>
