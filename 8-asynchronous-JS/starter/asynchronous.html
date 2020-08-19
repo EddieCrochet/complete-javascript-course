@@ -66,13 +66,14 @@
           return new Promise((resolve, reject) => {
               setTimeout(pub => {
                 const recipe = {title: 'Italian Pizza', publisher: 'Jonas'};
-                resolve(`${pub}: ${recipe}`);
+                resolve(`${pub}: ${recipe.title}`);
               }, 1500, publisher);
           })  
         };;
 
 // the argument we pass into the function below will be the
 //result of the successful promise
+/*
         getIDs.then(IDs => {
             console.log(IDs);
             return getRecipie(IDs[2]);
@@ -86,6 +87,23 @@
         .catch(error => {
             console.log("Error!");
         });
+        */
+
+        //same as code above, but using async/await function
+        //allows us to consume promises without all the callbacks
+        //function runs constantly in the background
+        async function getRecipesAW() {
+            //the await property stops code from executing until the promise is fulfilled
+            const IDs = await getIDs;
+            console.log(IDs);
+            const recipe = await getRecipie(IDs[2]);
+            console.log(recipe);
+            const related = await getRelated('Jonas Shederman');
+            console.log(related);
+
+            return recipe;
+        }
+        getRecipesAW().then(result => console.log(`${result} is the best ever!`));
 
     </script>
 </body>
