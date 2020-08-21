@@ -111,14 +111,28 @@
 
 //pass in the url of the api we are trying to fetch
 //js fetch api gets data and returns a promise
-        fetch("https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/2487956/")
+
+//very simple ajax call using feth()
+//we read with json that return new promise
+        function getWeather(woeid) {
+            fetch
+            (`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${woeid}/`)
         .then(result => {
             //the data that gets fetched from the ajax request will be called result in this function
             console.log(result);
-            //now have to read object into JSON
+            return result.json()
+        })
+        .then(data => {
+            //console.log(data);
+            const today = data.consolidated_weather[0];
+            console.log(`Temperatures in ${data.title} stay between ${today.min_temp} and ${today.max_temp}.`);
         })
         .catch(error => console.log(error));
+        }
 
+        getWeather(2487956);
+        getWeather(44418);
+        //getWeather(8);
 
     </script>
 </body>
