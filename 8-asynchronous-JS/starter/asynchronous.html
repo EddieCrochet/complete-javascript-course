@@ -119,7 +119,7 @@
             (`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${woeid}/`)
         .then(result => {
             //the data that gets fetched from the ajax request will be called result in this function
-            console.log(result);
+            //console.log(result);
             return result.json()
         })
         .then(data => {
@@ -130,9 +130,19 @@
         .catch(error => console.log(error));
         }
 
-        getWeather(2487956);
-        getWeather(44418);
+        //getWeather(2487956);
+        //getWeather(44418);
         //getWeather(8);
+
+        async function getWeatherAW(woeid) {
+            const result = await fetch
+            (`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${woeid}/`);
+            const data = await result.json();
+            console.log(data);
+        }
+        getWeatherAW(2487956);
+        getWeatherAW(44418);
+        //getWeatherAW(8);
 
     </script>
 </body>
