@@ -1,6 +1,7 @@
 //GLOBAL CONTROLLER
 
 import Search from'./models/Search';
+import Recipe from './models/Recipe';
 import {elements, renderLoader, clearLoader} from './views/base';
 import * as searchView from './views/searchView';
 
@@ -51,6 +52,14 @@ elements.searchResPages.addEventListener('click', e => {
         searchView.renderResults(state.search.result, goToPage);
     }
 });
+
+
+
+///////////
+// RECIPE CONTROLLEr
+
+const r = new Recipe(47746);
+r.getRecipe();
 
 /*
 import string from './models/Search';
