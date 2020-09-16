@@ -29,13 +29,19 @@ const controlSearch = async () => {
         searchView.clearResults();
         renderLoader(elements.searchRes);
 
-        // 4) search for recipes
+        try {
+            // 4) search for recipes
             //get results from our api call
-        await state.search.getResults();
+            await state.search.getResults();
+            
+            // 5) render results on UI
+            clearLoader();
+            searchView.renderResults(state.search.result);
+        } catch (err) {
+            alert(`${err} is the problem... idk man....`);
+        }
+
         
-        // 5) render results on UI
-        clearLoader();
-        searchView.renderResults(state.search.result);
     }
 }
 
@@ -69,19 +75,29 @@ const controlRecipe = async () => {
         // Create new recipe object
         state.recipe = new Recipe(id);
 
-        //Get recipe data
-        await state.recipe.getRecipe();
+        try {
+            //Get recipe data
+            await state.recipe.getRecipe();
 
-        // calculate servings and TimeRanges
-        state.recipe.calcTime();
-        state.recipe.calcServings();
+            // calculate servings and TimeRanges
+            state.recipe.calcTime();
+            state.recipe.calcServings();
 
-        // render recipe
-        console.log(state.recipe);
+            // render recipe
+            console.log(state.recipe);
+            } catch (err) {
+                alert('Error rocessing recipe!!!!!!!!!');
+            }
+
+       
     }
 };
 
-window.addEventListener('hashchange', controlRecipe);
+//window.addEventListener('hashchange', controlRecipe);
+//window.addEventListener('load', cotrolRecipe);
+//OR....
+
+['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
 
 /* Just for testing
 const r = new Recipe(47746);
