@@ -56,13 +56,40 @@ elements.searchResPages.addEventListener('click', e => {
 
 
 ///////////
-// RECIPE CONTROLLEr
+// RECIPE CONTROLLER
 
+const controlRecipe = async () => {
+    // get ID from URL
+    const id = window.location.hash.replace('#', '');
+    console.log(id);
+
+    if (id) {
+        //prepare UI for changes
+
+        // Create new recipe object
+        state.recipe = new Recipe(id);
+
+        //Get recipe data
+        await state.recipe.getRecipe();
+
+        // calculate servings and TimeRanges
+        state.recipe.calcTime();
+        state.recipe.calcServings();
+
+        // render recipe
+        console.log(state.recipe);
+    }
+};
+
+window.addEventListener('hashchange', controlRecipe);
+
+/* Just for testing
 const r = new Recipe(47746);
 r.getRecipe();
 console.log(r);
+*/
 
-/*
+/* old code to show npm and module functionality
 import string from './models/Search';
 //import {add, multiply, ID} from './views/searchView';
 import * as searchView from './views/searchView';
