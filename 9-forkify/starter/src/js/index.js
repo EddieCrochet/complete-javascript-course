@@ -50,6 +50,7 @@ elements.searchForm.addEventListener('submit', e => {
     controlSearch();
 });
 
+//TESTING
 elements.searchResPages.addEventListener('click', e => {
     const btn = e.target.closest('.btn-inline');
     if (btn) {
