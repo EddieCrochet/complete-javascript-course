@@ -39,14 +39,52 @@ export default class Recipe {
             let ingredient = el.toLowerCase();
             //in order to avoit wayy too many cases in our arrays above
             unitsLong.forEach((unit, i) => {
-                ingredient = ingredient.replace(unit, unitShort[i]);
+                ingredient = ingredient.replace(unit, unitsShort[i]);
             });
 
             // 2) Remove parentheses
             ingredient = ingredient.replace(/ *\([^)]*\) */g, ' ');
             // 3) parse ingredients into count, unit and ingredient
 
-            return ingredient;
+            const arrIng = ingredient.split(' ');
+            const unitIndex = arrIng.findIndex(el2 => unitsShort.includes(el2));
+            
+            let objIng;
+            if (unitIndex > -1) {
+                // There is a unit
+                const arrCount = arrIng.slice(0, unitIndex);
+                // EX. 4 1/2 cups - arrCount will is [4, 1/2]
+                // EX. 4 cups arrCount is [4]
+                let count;
+                if (arrCount.length === 1) {
+                    count = eval(arrIng[0].replace('-', '+'));
+                } else {
+                    count = eval(arrIng.slice(0, unitIndex).join('+'));
+                }
+
+                objIng = {
+                    count,
+                    unit: arrIng[unitIndex],
+                    ingredient: arrIng.slice(unitIndex + 1).join(' ')
+                };
+
+            } else if (parseInt(arrIng[0], 10)) {
+                //there is no unit, but the first element is a number
+                objIng = {
+                    count: parseInt(arrIng[0], 10),
+                    unit: '',
+                    ingredient: arrIng.slice(1).join(' ') 
+                }
+            } else if (unitIndex === -1) {
+                //There is no unit, and no number in 1st position
+                objIng = {
+                    count: 1,
+                    unit: '',
+                    ingredient
+                }
+            }
+
+            return objIng;
             //mapped into the new array
         });
         this.ingredients = newIngredients;

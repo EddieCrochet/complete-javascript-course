@@ -18,7 +18,6 @@ const controlSearch = async () => {
     // 1) get query from the view
         //read input from the input field
     const query = searchView.getInput();
-    //console.log(query);
 
     if (query) {
         // 2) new search object and add it to state
@@ -39,6 +38,7 @@ const controlSearch = async () => {
             searchView.renderResults(state.search.result);
         } catch (err) {
             alert(`${err} is the problem... idk man....`);
+            clearLoader();
         }
 
         
@@ -50,7 +50,6 @@ elements.searchForm.addEventListener('submit', e => {
     controlSearch();
 });
 
-//TESTING
 elements.searchResPages.addEventListener('click', e => {
     const btn = e.target.closest('.btn-inline');
     if (btn) {
@@ -77,8 +76,9 @@ const controlRecipe = async () => {
         state.recipe = new Recipe(id);
 
         try {
-            //Get recipe data
+            //Get recipe data and parse ingredients
             await state.recipe.getRecipe();
+            state.recipe.parseIngredients();
 
             // calculate servings and TimeRanges
             state.recipe.calcTime();
